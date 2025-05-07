@@ -1,18 +1,18 @@
 // src/app/profile/[id]/page.tsx
 'use client';
 
-import type { User , Faculty, Student} from '@/types/user';
+import type { User , Faculty} from '@/types/user';
 
 import { useEffect, useState, useCallback } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 // Import the API function to get a user by ID
 import { facultyService, studentService} from '@/services/api'; // Assuming getUserById lives here or a shared user service
 import Image from 'next/image';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'; // Added CardDescription
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'; // Added CardDescription
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Mail, Briefcase, FileText, Lightbulb, CalendarCheck, FlaskConical, GraduationCap, User as UserIcon, Handshake, Edit, Save, X as CancelIcon, AlertCircle, CheckCircle, Loader2 } from 'lucide-react'; // Added icons
+import { Mail, Briefcase, FileText, Lightbulb, CalendarCheck, FlaskConical, GraduationCap, User as UserIcon, Handshake, Edit, Save, X as CancelIcon, AlertCircle, Loader2 } from 'lucide-react'; // Added icons
 import { Skeleton } from '@/components/ui/skeleton';
 import CollaborationRequestForm from '@/components/collaboration-request-form';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
@@ -24,7 +24,7 @@ import { Input } from '@/components/ui/input'; // Import Input
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'; // Import Select
 import { toast } from 'sonner';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm, } from 'react-hook-form';
 import * as z from 'zod';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 
@@ -70,7 +70,6 @@ export default function ProfilePage() {
   const [isEditing, setIsEditing] = useState(false);
   const [isRequestDialogOpen, setIsRequestDialogOpen] = useState(false);
   const [error, setError] = useState<string | null>(null); // State for fetch errors;
-  const router = useRouter();
 
    // Form handling for editing
    const form = useForm<ProfileFormData>({

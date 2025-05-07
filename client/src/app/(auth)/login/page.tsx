@@ -33,7 +33,7 @@ const formSchema = z.object({
     password: z.string().min(1, { message: "Password cannot be empty." }), // Changed min to 1 for presence check
 });
 
-const page = () => {
+const Page = () => {
     const [error, setError] = useState<string | null>(null);
     const router = useRouter();
     const { login, loading} = useAuth();
@@ -136,7 +136,7 @@ const page = () => {
                 </CardContent>
                 <CardFooter className="flex flex-col items-center text-sm">
                     <p className="text-muted-foreground">
-                        Don't have an account?{" "}
+                        Don&apos;t have an account?{" "}
                         <Button
                             variant="link"
                             className="p-0 h-auto"
@@ -151,4 +151,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default Page;

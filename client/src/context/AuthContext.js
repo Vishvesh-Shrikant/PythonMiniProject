@@ -29,6 +29,7 @@ export const AuthProvider = ({ children }) => {
             } catch (err) {
                 localStorage.removeItem("token");
                 setError("Session expired. Please login again.");
+                console.error("🚫 Error loading user:", err);
             } finally {
                 setLoading(false);
             }
@@ -43,8 +44,8 @@ export const AuthProvider = ({ children }) => {
         try {
             const res = await authService.registerStudent(userData);
             localStorage.setItem("token", res.data.access_token);
-            const userData = await loadUserProfile();
-            if (userData) router.push("/login");
+            const usersData = await loadUserProfile();
+            if (usersData) router.push("/login");
             return res.data;
         } catch (err) {
             setError(err.response?.data?.message || "Registration failed");
@@ -60,8 +61,8 @@ export const AuthProvider = ({ children }) => {
         try {
             const res = await authService.registerFaculty(userData);
             localStorage.setItem("token", res.data.access_token);
-            const userData = await loadUserProfile();
-            if (userData) router.push("/login");
+            const usersData = await loadUserProfile();
+            if (usersData) router.push("/login");
             return res.data;
         } catch (err) {
             setError(err.response?.data?.message || "Registration failed");

@@ -61,7 +61,7 @@ export default function PrivacyPolicyPage() {
           <p>In some regions, you have rights that allow you greater access to and control over your personal information. You may review, change, or terminate your account at any time.</p>
 
           <h2>Updates to This Notice</h2>
-          <p>We may update this privacy notice from time to time. The updated version will be indicated by an updated "Last Updated" date.</p>
+          <p>We may update this privacy notice from time to time. The updated version will be indicated by an updated &quot;Last Updated&quot; date.</p>
 
           <h2>How Can You Contact Us About This Notice?</h2>
           <p>If you have questions or comments about this notice, you may email us at privacy@academiaconnect.example.com or by post to [Your University Department Address].</p>

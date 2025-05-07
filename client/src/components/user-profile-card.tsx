@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import type { User } from "@/types/user"; // Use shared User type
 import {
     Card,

@@ -1,5 +1,4 @@
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import Image from 'next/image';
 import { Star } from 'lucide-react';
 
 const testimonials = [
@@ -60,7 +59,7 @@ export default function TestimonialsPage() {
             </CardHeader>
             <CardContent className="flex-grow p-6">
               <blockquote className="italic text-muted-foreground">
-                "{testimonial.quote}"
+              &quot;{testimonial.quote}&quot;
               </blockquote>
             </CardContent>
              <CardFooter className="p-6 pt-0 flex justify-end">

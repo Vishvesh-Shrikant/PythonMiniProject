@@ -47,7 +47,7 @@ export default function TermsOfServicePage() {
             </ul>
 
             <h2>User Generated Contributions</h2>
-            <p>The Platform allows you to create, submit, post, display, transmit, perform, publish, distribute, or broadcast content and materials to us or on the Platform, including but not limited to text, writings, video, audio, photographs, graphics, comments, suggestions, or personal information or other material (collectively, "Contributions"). Your Contributions are viewable by other users of the Platform.</p>
+            <p>The Platform allows you to create, submit, post, display, transmit, perform, publish, distribute, or broadcast content and materials to us or on the Platform, including but not limited to text, writings, video, audio, photographs, graphics, comments, suggestions, or personal information or other material (collectively, &quot;Contributions&quot;). Your Contributions are viewable by other users of the Platform.</p>
             <p>You warrant that your Contributions are accurate and do not violate the privacy rights, publicity rights, copyrights, contract rights, intellectual property rights, or any other rights of any third party.</p>
 
 

@@ -108,7 +108,8 @@ export default function SignupPage() {
         // Prepare data for the signup function (excluding confirmPassword)
         // Ensure userType is explicitly included
         const { confirmPassword, ...signupData } = values;
-
+        // Check if userType is selected   
+        console.log(confirmPassword)
          if (!signupData.userType) {
              setError('Please select whether you are Faculty or a Student.');
              toast('Please select your role (Faculty or Student).'  );

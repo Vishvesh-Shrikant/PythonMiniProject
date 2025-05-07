@@ -16,10 +16,10 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
-import { Skeleton } from "@/components/ui/skeleton";
+
 import { debounce } from "lodash";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Search, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
