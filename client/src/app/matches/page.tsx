@@ -17,6 +17,15 @@ export default function MatchesPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  function isErrorWithMessage(err: unknown): err is { message: string } {
+    return (
+      typeof err === 'object' &&
+      err !== null &&
+      'message' in err &&
+      typeof (err as { message?: unknown }).message === 'string'
+    );
+  }
+  
   useEffect(() => {
     if (authLoading) return;
 
@@ -32,15 +41,14 @@ export default function MatchesPage() {
       try {
         const data = await collaborationService.getMatches();
         setMatches(data.data.matches || []);
-      } catch (err: unknown) {
+      }catch (err: unknown) {
         console.error(err);
       
-        let errorMessage = 'Failed to fetch matches.';
-        if (err && typeof err === 'object' && 'message' in err && typeof (err as any).message === 'string') {
-          errorMessage = (err as any).message;
+        if (isErrorWithMessage(err)) {
+          setError(err.message);
+        } else {
+          setError('Failed to fetch matches.');
         }
-      
-        setError(errorMessage);
       }
       
       setIsLoading(false);
