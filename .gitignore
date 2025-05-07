@@ -1,0 +1,7 @@
+client/.env
+client/node_modules
+backend/.env
+backend/app/__pycahche__
+backend/app/api/__pycache__/
+backend/app/auth/__pycache__/
+backend/app/models/__pycache__/
