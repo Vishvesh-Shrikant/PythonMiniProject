@@ -15,7 +15,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { useToast } from '@/hooks/use-toast';
+import { toast } from 'sonner';
 import { Mail, Phone, MapPin } from 'lucide-react';
 
 
@@ -27,7 +27,6 @@ const formSchema = z.object({
 });
 
 export default function ContactPage() {
-  const { toast } = useToast();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -41,10 +40,7 @@ export default function ContactPage() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     // In a real app, you'd send this data to your backend API
     console.log('Contact form submitted:', values);
-    toast({
-      title: 'Message Sent!',
-      description: 'Thank you for contacting us. We will get back to you shortly.',
-    });
+    toast( 'Message Sent!',);
     form.reset(); // Reset form after submission
   }
 
