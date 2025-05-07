@@ -1,0 +1,31 @@
+# Flask and extensions
+Flask==2.3.3
+Flask-Cors==4.0.0
+Flask-JWT-Extended==4.5.3
+
+# Database
+pymongo==4.5.0
+
+# Password hashing
+passlib==1.7.4
+
+# Environment variables
+python-dotenv==1.0.0
+
+# Email validation
+email-validator==2.0.0
+
+# Date and time handling
+pytz==2023.3
+
+# BSON handling for MongoDB
+bson==0.5.10
+
+# Utilities
+Werkzeug==2.3.7
+MarkupSafe==2.1.3
+Jinja2==3.1.2
+
+# Development tools (optional)
+pytest==7.4.0
+pytest-flask==1.2.0
