@@ -34,12 +34,15 @@ export default function MatchesPage() {
         setMatches(data.data.matches || []);
       } catch (err: unknown) {
         console.error(err);
-        if (err instanceof Error) {
-          setError(err.message);
-        } else {
-          setError('Failed to fetch matches.');
+      
+        let errorMessage = 'Failed to fetch matches.';
+        if (err && typeof err === 'object' && 'message' in err && typeof (err as any).message === 'string') {
+          errorMessage = (err as any).message;
         }
+      
+        setError(errorMessage);
       }
+      
       setIsLoading(false);
     };
 

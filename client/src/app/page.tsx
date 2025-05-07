@@ -15,7 +15,7 @@ export default function Home() {
         </h1>
         <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
           Connect with faculty and students across departments based on shared research interests. Foster collaboration, spark innovation, and advance your academic journey.
-        </p>
+        </p>  
         <div className="space-x-4">
           <Button asChild size="lg">
             <Link href="/directory">Find a Collaborator</Link>
