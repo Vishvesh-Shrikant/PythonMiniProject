@@ -32,12 +32,15 @@ export default function MatchesPage() {
       try {
         const data = await collaborationService.getMatches();
         setMatches(data.data.matches || []);
-      } catch (err: string | any) {
+      } catch (err: unknown) {
         console.error(err);
-        setError(err.message || 'Failed to fetch matches.');
-      } finally {
-        setIsLoading(false);
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError('Failed to fetch matches.');
+        }
       }
+      setIsLoading(false);
     };
 
     fetchMatches();
