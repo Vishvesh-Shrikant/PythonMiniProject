@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }) => {
         setLoading(true);
         try {
             const res = await authService.registerStudent(userData);
-            localStorage.setItem("token", res.data.access_token);
+            localStorage.setItem("token", res.data.accesToken);
             const usersData = await loadUserProfile();
             if (usersData) router.push("/login");
             return res.data;
@@ -60,7 +60,14 @@ export const AuthProvider = ({ children }) => {
         setLoading(true);
         try {
             const res = await authService.registerFaculty(userData);
-            localStorage.setItem("token", res.data.access_token);
+            const token = res.data.access_token; // ✅ correct field
+
+            if (!token) throw new Error("Token missing in response");
+
+            // Store the token
+            localStorage.setItem("token", token);
+            api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
             const usersData = await loadUserProfile();
             if (usersData) router.push("/login");
             return res.data;
