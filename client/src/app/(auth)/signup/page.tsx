@@ -56,7 +56,7 @@ const formSchema = baseSchema.refine((data) => data.password === data.confirmPas
 type FormData = z.infer<typeof formSchema>;
 
 export default function SignupPage() {
-    const { signup, isLoading } = useAuth(); // Get signup function and loading state
+    const { registerFaculty, registerStudent, isLoading } = useAuth(); // Get signup function and loading state
     const router = useRouter();
     const [error, setError] = useState<string | null>(null);
     const [currentInterest, setCurrentInterest] = useState(''); // For the interest input field
@@ -124,16 +124,30 @@ export default function SignupPage() {
             currentProjects: signupData.currentProjects ?? [],
         };
 
-
-        const success = await signup(finalSignupData, values.userType);
-
-        if (success) {
-            toast('Signup Successful!');
-            router.push('/matches'); // Redirect to matches page after successful signup
-        } else {
-            setError('Signup failed. An account with this email might already exist, or an error occurred.');
-            toast('Signup Failed');
+        if(values.userType =="faculty")
+        {
+            const success = await registerFaculty(finalSignupData, values.userType);
+            if (success) {
+                toast('Signup Successful!');
+                router.push('/matches'); // Redirect to matches page after successful signup
+            } else {
+                setError('Signup failed. An account with this email might already exist, or an error occurred.');
+                toast('Signup Failed');
+            }
         }
+        else if (values.userType =="student")
+        {
+            const success = await registerStudent(finalSignupData, values.userType);
+            if (success) {
+                toast('Signup Successful!');
+                router.push('/matches'); // Redirect to matches page after successful signup
+            } else {
+                setError('Signup failed. An account with this email might already exist, or an error occurred.');
+                toast('Signup Failed');
+            }
+        }
+
+        
     }
 
     return (
