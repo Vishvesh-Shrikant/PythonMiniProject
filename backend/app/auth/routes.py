@@ -186,11 +186,16 @@ def register_student():
     if errors:
         return jsonify({"success": False, "errors": errors}), 400
     
+    access_token = create_access_token(identity=data.email, additional_claims={
+        "email": data.email,
+        "user_type": data.user_type
+    })
     student_id = Student.create_student(data)
     return jsonify({
         "success": True,
         "message": "Student registered successfully", 
-        "student_id": student_id
+        "student_id": student_id,
+        "accessToken": access_token
     }), 201
 
 @auth.route('/register/faculty', methods=['POST'])
@@ -201,11 +206,18 @@ def register_faculty():
     if errors:
         return jsonify({"success": False, "errors": errors}), 400
     
+    access_token = create_access_token(identity=data.email, additional_claims={
+        "email": data.email,
+        "user_type": data.user_type
+        
+    })
+    
     faculty_id = Faculty.create_faculty(data)
     return jsonify({
         "success": True,
         "message": "Faculty registered successfully", 
-        "faculty_id": faculty_id
+        "faculty_id": faculty_id,
+        "accessToken": access_token
     }), 201
 
 
